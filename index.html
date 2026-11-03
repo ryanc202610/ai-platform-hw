@@ -3,19 +3,36 @@
     <html lang="zh-TW">
     <head>
         <meta charset="UTF-8">
-        <title>LLM AI 對話結果</title>
+        <title>LLM AI 結構化對話結果</title>
         <style>
             body { font-family: sans-serif; margin: 40px; line-height: 1.6; background: #f4f4f9; color: #333; }
-            .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-            h1 { color: #2c3e50; }
-            .reply { background: #f8f9fa; padding: 20px; border-left: 5px solid #007bff; white-space: pre-wrap; }
+            .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+            h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+            .status-bar { font-size: 0.9em; color: #666; margin-bottom: 20px; }
+            .reply { background: #f8f9fa; padding: 20px; border-left: 5px solid #007bff; border-radius: 4px; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; }
+            .tip { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+            .tag { display: inline-block; background: #e2e8f0; color: #4a5568; padding: 5px 10px; border-radius: 15px; margin-right: 5px; font-size: 0.85em; }
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>Gemini 最新對話回應</h1>
-            <p><strong>執行時間：</strong> 2026-11-03 16:12:49</p>
-            <div class="reply">你好！很高興能與你交流。請問今天有什麼我可以幫忙的嗎？</div>
+            <h1>LLM 智慧自動化回應</h1>
+            <div class="status-bar">
+                <p><strong>執行時間：</strong> 2026-11-03 21:14:00</p>
+                <p><strong>AI 模擬狀態：</strong> <span style="color: #28a745;">電力充沛，隨時準備協助您！</span></p>
+            </div>
+            
+            <div class="reply">
+                早安！願你有個美好而充實的一天。
+            </div>
+            
+            <div class="tip">
+                <strong>💡 今日小建議：</strong><br>面對挑戰時，不妨深呼吸，把大目標拆解成小步驟，就能輕鬆跨越。
+            </div>
+            
+            <div class="tags-container">
+                <span class='tag'>#每日問候</span><span class='tag'>#正能量</span><span class='tag'>#生活小建議</span>
+            </div>
         </div>
     </body>
     </html>
