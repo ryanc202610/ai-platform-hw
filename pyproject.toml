@@ -1,5 +1,5 @@
 [project]
-name = "ai-platform-week1"
+name = "ai-platform-hw"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ai-platform-week1 = "ai_platform_week1:main"
+ai-platform-hw = "ai_platform_hw:main"
 
 [build-system]
 requires = ["uv_build>=0.13.5,<0.14.0"]
