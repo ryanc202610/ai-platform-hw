@@ -30,15 +30,15 @@ try:
 
     # 3. 在提示詞 (Prompt) 中, 規範 JSON 的欄位結構
     prompt_message = """
-    你好！請幫我生成今日問候。你必須回傳一個 JSON 物件，且精確包含以下四個欄位：
-    1. "greeting": 親切的繁體中文問候語。
-    2. "ai_status": 你目前的模擬心情或狀態（例如：電力充沛、思路清晰）。
-    3. "daily_tip": 給使用者的一句今日正能量短語或實用小建議。
+    你是一位旅遊達人，請針對台灣這個地區，建議當地的三個知名景點及旅遊注意事項。你必須回傳一個 JSON 物件，且精確包含以下四個欄位：
+    1. "attraction": 專業的繁體中文簡介三個知名景點。
+    2. "weather": 台灣目前的氣候（例如：天氣晴朗、多雲偶陣雨）。
+    3. "notes": 給使用者當地旅遊的注意事項。
     4. "tags": 一個字串列表（Array of strings），包含 2-3 個繁體中文的標籤分類。
 
     請注意：只回傳純 JSON 字串，不要包含任何 markdown 標記（如 ```json）。
     """
-
+    
     # 4. 發送請求
     response = client.chat.completions.create(
         model=model_name,
@@ -61,7 +61,7 @@ try:
     tags_html = "".join([f"<span class='tag'>#{tag}</span>" for tag in result_data.get("tags", [])])
 
     print("\n==== LLM 回覆 ====\n")
-    print(result_data.get("greeting"))
+    print(result_data.get("attraction"))
     print("\n=====================\n")
 
     html_content = f"""
@@ -69,31 +69,31 @@ try:
     <html lang="zh-TW">
     <head>
         <meta charset="UTF-8">
-        <title>LLM AI 結構化對話結果</title>
+        <title>台灣旅遊AI助理 結構化對話結果</title>
         <style>
             body {{ font-family: sans-serif; margin: 40px; line-height: 1.6; background: #f4f4f9; color: #333; }}
             .container {{ background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }}
             h1 {{ color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }}
             .status-bar {{ font-size: 0.9em; color: #666; margin-bottom: 20px; }}
-            .reply {{ background: #f8f9fa; padding: 20px; border-left: 5px solid #007bff; border-radius: 4px; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; }}
+            .reply {{ background: #f8f9fa; padding: 20px; border-left: 5px solid #007bff; border-radius: 4px; font-weight: normal; margin-bottom: 20px; }}
             .tip {{ background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; border-radius: 4px; margin-bottom: 20px; }}
             .tag {{ display: inline-block; background: #e2e8f0; color: #4a5568; padding: 5px 10px; border-radius: 15px; margin-right: 5px; font-size: 0.85em; }}
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>LLM 智慧自動化回應</h1>
+            <h1>台灣旅遊 AI 助理 - LLM 生成回覆</h1>
             <div class="status-bar">
                 <p><strong>執行時間：</strong> {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-                <p><strong>AI 模擬狀態：</strong> <span style="color: #28a745;">{result_data.get("ai_status", "正常")}</span></p>
+                <p><strong>當地氣候：</strong> <span style="color: #28a745;">{result_data.get("weather", "正常")}</span></p>
             </div>
             
             <div class="reply">
-                {result_data.get("greeting", "你好！")}
+                {result_data.get("attraction", "景點簡介生成中...")}
             </div>
             
             <div class="tip">
-                <strong>💡 今日小建議：</strong><br>{result_data.get("daily_tip", "保持微笑，迎接美好的一天。")}
+                <strong>💡 注意事項：</strong><br>{result_data.get("notes", "保持微笑，迎接美好的一天。")}
             </div>
             
             <div class="tags-container">
